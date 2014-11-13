@@ -2197,11 +2197,12 @@ int checkPROCFile() {
         return 0;
     }
     else fprintf(stderr, "\nBoard ID verified");
-    if (board_rev > max_board_rev || board_rev < min_board_rev) {
-        fprintf(stderr, "\nERROR: This image is not compatible with the P-ROC board (rev: %x)", board_id);
-        return 0;
-    }
-    else fprintf(stderr, "\nBoard rev verified");
+    //if (board_rev > max_board_rev || board_rev < min_board_rev) {
+    //    fprintf(stderr, "\nERROR: This image is not compatible with the P-ROC board (rev: %x)", board_id);
+    //    fprintf(stderr, "\nERROR:board_rev: %d, max_board_rev: %d, min_board_rev: %d", board_rev, max_board_rev, min_board_rev); 
+    //    return 0;
+    //}
+    //else fprintf(stderr, "\nBoard rev verified");
 
     checksum = 0;
     i = 0;
