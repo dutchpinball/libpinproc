@@ -12,6 +12,8 @@ libpinproc requires:
 
 - [libftdi](https://www.intra2net.com/en/developer/libftdi/): Install with the default /usr/local prefix.
 
+On Windows, [ftd2xx](https://github.com/dutchpinball/ftd2xx) is used instead of these.
+
 #### Building with CMake (Linux and macOS)
 
 Download and install [CMake](https://cmake.org/download/).  Then:

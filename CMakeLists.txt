@@ -94,6 +94,7 @@ endif()
 
 if(WIN32)
 	set(lib_ftdi_usb ftd2xx)
+	find_package(ftd2xx)
 	if(BUILD_SHARED_LIBS)
 		add_definitions(-D${PROJECT_NAME}_DLL)	# use or build Windows DLL
 	endif()
@@ -193,6 +194,12 @@ set_target_properties(pinproc PROPERTIES
 	SOVERSION "${PINPROC_VERSION_MAJOR}.${PINPROC_VERSION_MINOR}"
 	PROJECT_LABEL "pinproc ${LABEL_SUFFIX}"
 )
+
+if(ftd2xx_FOUND)
+	target_include_directories(pinproc PUBLIC ${ftd2xx_INCLUDE_DIRS})
+	target_link_directories(pinproc PUBLIC ${ftd2xx_LIBRARY_DIRS})
+	set(lib_ftdi_usb ${ftd2xx_LIBRARIES})
+endif()
 
 target_link_libraries(pinproc
 	${lib_ftdi_usb}
