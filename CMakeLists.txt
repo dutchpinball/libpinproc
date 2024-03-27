@@ -252,3 +252,13 @@ target_link_libraries(pinprocfw
 	pinproc
 )
 endif()
+
+### Packaging
+set(CPACK_PACKAGE_NAME "libpinproc")
+set(CPACK_PACKAGE_VENDOR "Multimorphic")
+set(CPACK_PACKAGE_VERSION_MAJOR ${PINPROC_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PINPROC_VERSION_MINOR})
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "P-ROC/libpinproc")
+set(CPACK_WIX_UPGRADE_GUID "5d2dd0a3-bffb-4aae-8385-b1fcf0da522d")
+Include(CPack)
