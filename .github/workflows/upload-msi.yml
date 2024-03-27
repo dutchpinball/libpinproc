@@ -1,0 +1,30 @@
+name: Build and upload MSI
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install ftd2xx
+      uses: ./.github/actions/install-ftd2xx
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake -DBUILD_SHARED_LIBS=yes ..
+        cmake --build . --config Release
+        cpack -G WIX
+      shell: cmd
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: MSI
+        path: build/*.msi
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: build/*.msi

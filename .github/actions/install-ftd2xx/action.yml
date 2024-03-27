@@ -1,0 +1,13 @@
+name: Install ftd2xx
+runs:
+  using: composite
+  steps:
+  - name: Download latest ftd2xx MSI
+    uses: robinraju/release-downloader@v1.9
+    with:
+      repository: dutchpinball/ftd2xx
+      latest: true
+      fileName: "*.msi"
+  - name: Install the MSI
+    run: for %%i in (ftd2xx-*.msi) do msiexec /i %%i /quiet
+    shell: cmd
