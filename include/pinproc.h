@@ -838,6 +838,8 @@ PINPROC_API PRResult PRLEDRGBColor(PRHandle handle, PRLEDRGB * pLED, uint32_t co
 PINPROC_API PRResult PRLEDRGBFade(PRHandle handle, PRLEDRGB * pLED, uint32_t fadeColor, uint16_t fadeRate);
 /** Sets the fade color on a given PRLEDRGB. */
 PINPROC_API PRResult PRLEDRGBFadeColor(PRHandle handle, PRLEDRGB * pLED, uint32_t fadeColor);
+/** Sets a configuration register on a given PD-LED board. */
+PINPROC_API PRResult PRLEDConfigure(PRHandle handle, uint8_t boardAddr, uint8_t indirectRegisterAddr, uint16_t data);
 
 
 /** @} */ // End of PD-LED

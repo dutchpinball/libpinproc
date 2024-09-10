@@ -94,6 +94,7 @@ public:
     PRResult PRLEDRGBColor(PRLEDRGB * pLED, uint32_t color);
     PRResult PRLEDRGBFade(PRLEDRGB * pLED, uint32_t fadeColor, uint16_t fadeRate);
     PRResult PRLEDRGBFadeColor(PRLEDRGB * pLED, uint32_t fadeColor);
+    PRResult PRLEDConfigure(uint8_t boardAddr, uint8_t indirectRegisterAddr, uint16_t data);
 
     int GetVersionInfo(uint16_t *verPtr, uint16_t *revPtr, uint32_t *combinedPtr);
 

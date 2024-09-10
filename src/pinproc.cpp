@@ -609,3 +609,8 @@ PRResult PRLEDRGBFadeColor(PRHandle handle, PRLEDRGB * pLED, uint32_t fadeColor)
 {
     return handleAsDevice->PRLEDRGBFadeColor(pLED, fadeColor);
 }
+
+PRResult PRLEDConfigure(PRHandle handle, uint8_t boardAddr, uint8_t indirectRegisterAddr, uint16_t data)
+{
+    return handleAsDevice->PRLEDConfigure(boardAddr, indirectRegisterAddr, data);
+}

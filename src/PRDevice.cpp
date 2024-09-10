@@ -1488,3 +1488,20 @@ PRResult PRDevice::PRLEDRGBFadeColor(PRLEDRGB * pLED, uint32_t fadeColor)
     FillPDBCommand(P_ROC_DRIVER_PDB_WRITE_COMMAND, pLED->pBlueLED->boardAddr, kPRLEDRegisterTypeFadeColor, fadeColor & 0xFF, buffer);
     return PrepareWriteData(buffer, bufferWords);
 }
+
+PRResult PRDevice::PRLEDConfigure(uint8_t boardAddr, uint8_t indirectRegisterAddr, uint16_t data)
+{
+    const int bufferWords = 2;
+    uint32_t buffer[bufferWords];
+
+    // yes, the "led index" register is used to store the data to be written into the configuration
+    // ask the data sheet, not me
+    FillPDBCommand(P_ROC_DRIVER_PDB_WRITE_COMMAND, boardAddr, kPRLEDRegisterTypeLEDIndex, data, buffer);
+    PrepareWriteData(buffer, bufferWords);
+    FillPDBCommand(P_ROC_DRIVER_PDB_WRITE_COMMAND, boardAddr, kPRLEDRegisterTypeLEDIndexHigh, data >> 8, buffer);
+    PrepareWriteData(buffer, bufferWords);
+    // and conversely, the "data" register is used for the address
+    FillPDBCommand(P_ROC_DRIVER_PDB_WRITE_COMMAND, boardAddr, kPRLEDRegisterTypeData, indirectRegisterAddr, buffer);
+
+    return PrepareWriteData(buffer, bufferWords);
+}

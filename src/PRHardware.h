@@ -52,7 +52,9 @@ typedef enum PRLEDRegisterType {
     kPRLEDRegisterTypeColor           = 1,
     kPRLEDRegisterTypeFadeColor       = 2,
     kPRLEDRegisterTypeFadeRateLow     = 3,
-    kPRLEDRegisterTypeFadeRateHigh    = 4
+    kPRLEDRegisterTypeFadeRateHigh    = 4,
+    kPRLEDRegisterTypeLEDIndexHigh    = 6, /**< Determines the upper bits of the data written to the "indirect register" */
+    kPRLEDRegisterTypeData            = 7 /**< Determines the "indirect register" to write to */
 } PRPDLEDRegisterType;
 
 typedef struct PRSwitchRuleInternal {
